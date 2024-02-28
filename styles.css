@@ -248,7 +248,7 @@ body {
   margin-right: auto;
   margin-left: auto;
   flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
-  min-height: 800px;
+  min-height: 915px;
 }
 
 
@@ -846,13 +846,90 @@ body {
   }
 }
 
-/* Set the size of the div element that contains the map */
-#map {
-  height: 400px; /* The height is 400 pixels */
-  width: 100%; /* The width is the width of the web page */
+/*Map*/
+.map-section {
+  background-color: #131313;
+  padding: 50px 0;
 }
 
-/* Footer CSS */
+.map-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  text-align: center;
+  position:relative;
+  height: 700px;
+
+  
+  display: flex;
+  flex-wrap: wrap; /* Allow columns to wrap to the next line */
+  
+}
+
+
+
+
+.map-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-align: left;
+
+  background-color: #ff8177;
+  background-image: linear-gradient(
+    to right,
+    #ff8177 0%,
+    #ff867a 0%,
+    #ff8c7f 21%,
+    #f99185 52%,
+    #cf556c 78%,
+    #b12a5b 100%
+  );
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  margin-bottom: 5rem;
+  font-size: 2.5rem;
+  margin-left: 50px;
+
+  
+
+  
+}
+
+.centered-map-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+
+
+.centered-map-container h2 {
+  font-size: 1.5rem;
+  color: #666;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+
+  background-color: white;
+  /*background-image: linear-gradient(to top,#35ade3 0%, #95cfef 100%);*/
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  margin-bottom: 5rem;
+  font-size: 2.5rem;
+
+}
+
+.iframe {
+  width:100%;
+}
+
 /* Footer CSS */
 .footer {
   background-color:transparent;
