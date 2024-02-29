@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>UPdate</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="signup.css" />
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfZloMpAAAAAFnvPGjJmF0eOooECG6dNzxHRsOM"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+      *:before,
+      *:after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #080710;
+      }
+      .background {
+        width: 430px;
+        height: 520px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+      }
+      .background .shape {
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        border-radius: 50%;
+      }
+      .shape:first-child {
+        background: linear-gradient(#1845ad, #23a2f6);
+        left: -80px;
+        top: -80px;
+      }
+      .shape:last-child {
+        background: linear-gradient(to right, #ff512f, #f09819);
+        right: -30px;
+        bottom: -80px;
+      }
+      form {
+        height: 620px;
+        width: 400px;
+        background-color: rgba(255, 255, 255, 0.13);
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        padding: 50px 35px;
+      }
+      form * {
+        font-family: "Poppins", sans-serif;
+        color: #ffffff;
+        letter-spacing: 0.5px;
+        outline: none;
+        border: none;
+      }
+      form h3 {
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 42px;
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-top: 30px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+      input {
+        display: block;
+        height: 50px;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.07);
+        border-radius: 3px;
+        padding: 0 10px;
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 300;
+      }
+      ::placeholder {
+        color: #e5e5e5;
+      }
+      button {
+        margin-top: 50px;
+        width: 100%;
+        background-color: #ffffff;
+        color: #080710;
+        padding: 15px 0;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .social {
+        margin-top: 30px;
+        display: flex;
+      }
+      .social div {
+        background: red;
+        width: 150px;
+        border-radius: 3px;
+        padding: 5px 10px 10px 5px;
+        background-color: rgba(255, 255, 255, 0.27);
+        color: #eaf0fb;
+        text-align: center;
+      }
+      .social div:hover {
+        background-color: rgba(255, 255, 255, 0.47);
+      }
+      .social .fb {
+        margin-left: 25px;
+      }
+      .social i {
+        margin-right: 4px;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        text-align: center;
+        position: relative;
+      }
+
+      .modal img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background">
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+   
+    <form>
+      <div class="logo-container">
+        <a href="/index.html">
+          <img src="images/logoup2.png" alt="UPdate logo" />
+        </a>
+      </div>
+
+      <label for="name">Name</label>
+      <input type="text" placeholder="First and Last name" id="name" />
+
+      <label for="email">E-mail</label>
+      <input type="text" placeholder="Your e-mail account" id="email" />
+
+      <label for="number">Phone Number</label>
+      <input type="text" placeholder="Your phone number" id="number" />
+
+      <button
+        class="g-recaptcha"
+        data-sitekey="6LfZloMpAAAAAFnvPGjJmF0eOooECG6dNzxHRsOM"
+        data-callback="onSubmit"
+        data-action="register"
+        id="submit"
+      >
+        Register
+      </button>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Event QR Code</h2>
+          <p style="color: black">
+            Kindly keep this QR code handy as it will be indispensable for your
+            participation throughout the event, serving as your exclusive
+            identification.
+          </p>
+          <img id="qrCodeImg" src="" alt="QR Code" />
+        </div>
+      </div>
+    </form>
+    <script>
+      function onSubmit(token) {
+        // Read input field values
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var number = document.getElementById("number").value;
+
+        // Create JSON object
+        var data = {
+          name: name,
+          email: email,
+          cellphoneNumber: number,
+          id: number,
+        };
+
+        // Send data to server
+        sendDataToServer(data, token);
+      }
+
+      function sendDataToServer(data, token) {
+        // Send data to "/process" endpoint using fetch API
+        fetch("/process?token=" + token, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json(); // Parse response body as JSON
+            } else {
+              throw new Error("Failed to send data");
+            }
+          })
+          .then((responseData) => {
+            console.log("Response from server:", responseData);
+            if (responseData.data != null) displayModal(responseData);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+
+      // Display modal with text and image
+      function displayModal(responseData) {
+        // Extract the base64 encoded image data from the response
+        const imageData = responseData.data;
+
+        // Set the source of the image to the base64 encoded data
+        const img = document.getElementById("qrCodeImg");
+        img.src = "data:image/png;base64," + imageData;
+        downloadImage(imageData, "image.jpg");
+        // Display the modal
+        const modal = document.getElementById("myModal");
+        modal.style.display = "block";
+
+        // Close the modal when the close button is clicked or when clicking outside the modal
+        const closeBtn = document.querySelector(".close");
+        closeBtn.onclick = function () {
+          modal.style.display = "none";
+        };
+
+        window.onclick = function (event) {
+          if (event.target != modal) {
+            modal.style.display = "none";
+          }
+        };
+      }
+
+      function downloadImage(base64Data, filename) {
+        // Remove data URL prefix (e.g., 'data:image/jpeg;base64,')
+        var base64Image = base64Data.replace(
+          /^data:image\/(png|jpeg|jpg);base64,/,
+          ""
+        );
+
+        // Convert Base64 to binary
+        var binaryImg = atob(base64Image);
+
+        // Create a Uint8Array to hold the binary image data
+        var length = binaryImg.length;
+        var arrayBuffer = new ArrayBuffer(length);
+        var uint8Array = new Uint8Array(arrayBuffer);
+        for (var i = 0; i < length; i++) {
+          uint8Array[i] = binaryImg.charCodeAt(i);
+        }
+
+        // Create a blob from the Uint8Array
+        var blob = new Blob([uint8Array], { type: "image/jpeg" }); // Change the type accordingly if it's not JPEG
+
+        // Create a temporary anchor element
+        var a = document.createElement("a");
+        a.href = window.URL.createObjectURL(blob);
+        a.download = filename;
+
+        // Append the anchor to the body and trigger the click event
+        document.body.appendChild(a);
+        a.click();
+
+        // Clean up
+        document.body.removeChild(a);
+      }
+    </script>
+  </body>
+</html>
