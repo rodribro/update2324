@@ -266,7 +266,7 @@ body {
 }
 
 .box-1-content {
-  text-align: center; /* Align text to the left */
+  text-align: left; /* Align text to the left */
   padding-left: 20px; /* Add left padding for indentation */
   flex-direction: column; /* Stack items vertically */
   align-items: center;
@@ -275,9 +275,31 @@ body {
   
 }
 
+.box-1 span{
+
+  font-size: 2rem;
+  background-color: #ff8177;
+  background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-align: center;
+
+  font-family: "Sixtyfour", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "BLED" 0,
+    "SCAN" 0;
+
+}
+
 .hero-container h1 {
 
-  font-size: 3rem;
+  font-size: 5rem;
   background-color: #95cfef;
   background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
   background-size: 100%;
@@ -300,7 +322,7 @@ body {
 }
 
 .hero-container h2 {
-  font-size: 2rem;
+  font-size: 4rem;
   background-color: #ff8177;
   background-image: linear-gradient(to top,#35ade3 0%, #95cfef 100%);
   background-size: 100%;
@@ -325,7 +347,7 @@ body {
 
 .hero-container p {
   
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 700;
   color: white;
   text-align: center;
@@ -444,36 +466,125 @@ body {
     align-items: center; /* Center items vertically */
     /*padding-left: 150px;*/
   }
+
+  .hero-container h1 {
+    font-size: 3rem;
+
+  }
+
+  .hero-container h2 {
+    font-size: 3rem;
+  }
+
+  .hero-container p {
+    font-size: 1.5rem;
+  }
 }
 
-/*Schedule*/
-
-.schedule-section {
+/*About*/
+.about-section {
   background-color: #131313;
   padding: 50px 0;
+  
+}
+.columns-container {
+  display: flex;
 }
 
-.schedule-container {
+
+.about-container {
+
   max-width: 1300px;
   margin: 0 auto;
   text-align: center;
   position:relative;
-  height: 700px;
-
+  height: relative;
+  flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+ 
   
-  display: flex;
-  flex-wrap: wrap; /* Allow columns to wrap to the next line */
   
 }
 
 
+.left-column {
+  
+  padding-right: 20px; /* Add some spacing between columns */
 
+  flex: 1;
+  display: flex; /* Make box-1 a flex container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  /*background-color: orange;*/
+  /*margin-left: 200px;*/ /*talvez comentar
+                      influencia responsividade*/
+  margin-bottom: 50px;
 
-.schedule-container h1 {
+  
+}
+
+.right-column {
+  
+
+  flex: 1; /* Take up one-third of the available space */
+  /*background-color: blueviolet;*/
+  display: flex; /* Make box-2 a flex container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 500px; /* Adjust the height as needed */
+  margin-bottom: 50px;
+
+}
+
+.left-column h2 {
+  margin-bottom: 70px;
+  font-size: 1.5rem;
+  background-color: #ff8177;
+  background-image: linear-gradient(to top,#35ade3 0%, #95cfef 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-align: center;
+
+  font-family: "Sixtyfour", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "BLED" 0,
+    "SCAN" 0;
+
+  
+  
+  
+}
+
+.left-column span{
+
+  font-size: 1.5rem;
+  background-color: #ff8177;
+  background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-align: center;
+
+  font-family: "Sixtyfour", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "BLED" 0,
+    "SCAN" 0;
+
+}
+.about-section h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;
   text-align: left;
-
   background-color: #ff8177;
   background-image: linear-gradient(
     to right,
@@ -492,58 +603,52 @@ body {
   margin-bottom: 5rem;
   font-size: 2.5rem;
   margin-left: 50px;
+}
 
+
+
+.left-column-content {
+  text-align: left; /* Align text to the left */
+  padding-left: 20px; /* Add left padding for indentation */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  display:flex;
   
-
-  
 }
 
-.centered-schedule-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+@media screen and (max-width: 768px) {
+
+  .about-container {
+    
+    flex-direction: column;
+    max-width: 300px; /* Adjust the maximum width for smaller screens */
+    flex-direction: column; /* Stack flex items vertically on smaller screens */
+    align-items: center; /* Center items vertically */
+    /*padding-left: 150px;*/
+    
+  }
+
+
+
+  .left-column {
+    flex-basis: 100%; /* Make boxes take full width on small screens */
+    max-width: 100%;
+    margin-top: 60px;
+  }
+
+  .right-column {
+    max-width: 100%;
+    max-width: 100%;
+
+  }
+
+
+
 }
 
+/* Add additional styling for text and video if needed */
 
-
-.centered-schedule-container h2 {
-  font-size: 1.5rem;
-  color: #666;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  text-align: center;
-
-  background-color: white;
-  /*background-image: linear-gradient(to top,#35ade3 0%, #95cfef 100%);*/
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-  margin-bottom: 5rem;
-  font-size: 2.5rem;
-
-}
-
-.centered-schedule-container h3 {
-  font-size: 1.5rem;
-  color: #666;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  text-align: center;
-
-  background-color: white;
-  /*background-image: linear-gradient(to top,#35ade3 0%, #95cfef 100%);*/
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-  margin-bottom: 5rem;
-  font-size: 2.5rem;
-
-}
 
 
 
