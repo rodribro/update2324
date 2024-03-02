@@ -418,6 +418,7 @@ body {
   text-decoration: none;
 }
 
+
 .main__btn:after {
   position: absolute;
   content: '';
